@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orario Formetica</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Orario Formetica</h1>
+    <button id="theme-toggle" aria-label="Cambia tema">🌙</button>
+  </header>
+
+  <!-- Barra di ricerca -->
+  <div id="search-bar">
+    <input type="text" id="search-input" placeholder="Cerca materia, docente o sede...">
+  </div>
+
+  <!-- Filtro giorno -->
+  <div id="day-filter">
+    <select id="day-select">
+      <option value="all">Tutti i giorni</option>
+      <option value="lunedì">Lunedì</option>
+      <option value="martedì">Martedì</option>
+      <option value="mercoledì">Mercoledì</option>
+      <option value="giovedì">Giovedì</option>
+      <option value="venerdì">Venerdì</option>
+      <option value="sabato">Sabato</option>
+      <option value="domenica">Domenica</option>
+    </select>
+  </div>
+
+  <!-- Calendario -->
+  <main id="calendar-container">
+    <div id="calendar"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
