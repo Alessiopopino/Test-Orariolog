@@ -5,9 +5,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const daySelect = document.getElementById("day-select");
   const themeToggle = document.getElementById("theme-toggle");
 
-  /* === TEMA === */
-  const currentTheme = localStorage.getItem("theme");
-  if (currentTheme === "dark") document.body.classList.add("dark-mode");
+  /* ===== TEMA ===== */
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark") document.body.classList.add("dark-mode");
   themeToggle.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
 
   themeToggle.addEventListener("click", () => {
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     localStorage.setItem("theme", theme);
   });
 
-  /* === CREA CARD === */
+  /* ===== CREA CARD ===== */
   function createCard(item, index) {
     const card = document.createElement("div");
     card.classList.add("card");
@@ -26,7 +26,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     const dayName = date.toLocaleDateString("it-IT", { weekday: "long" });
 
     const formattedDate = `${dayName} ${date.toLocaleDateString("it-IT", {
-      day: "2-digit", month: "2-digit", year: "numeric"
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric"
     })}`;
 
     card.innerHTML = `
@@ -47,7 +49,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }, index * 60);
   }
 
-  /* === CARICAMENTO DATI === */
+  /* ===== CARICA DATI ===== */
   async function loadOrario() {
     try {
       const response = await fetch("orario.json", { cache: "no-store" });
@@ -58,14 +60,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  /* === RENDER === */
+  /* ===== RENDER ===== */
   const data = await loadOrario();
 
   data
     .sort((a, b) => new Date(a.data) - new Date(b.data))
     .forEach((item, index) => createCard(item, index));
 
-  /* === FILTRI === */
+  /* ===== FILTRI ===== */
   function applyFilters() {
     const text = searchInput.value.toLowerCase();
     const day = daySelect.value;
@@ -79,7 +81,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const matchText = content.includes(text);
       const matchDay = (day === "all") || dateText.includes(day);
 
-      card.style.display = matchText && matchDay ? "" : "none";
+      card.style.display = (matchText && matchDay) ? "" : "none";
     });
   }
 
