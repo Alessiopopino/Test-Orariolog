@@ -20,6 +20,13 @@
     "orario": "11:30 – 16:30",
     "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
   },
+    {
+    "data": "2026-03-04",
+    "materia": "Supplenza",
+    "docente": "Martina Pini",
+    "orario": "9:00 – 12:00",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
+  },
   {
     "data": "2026-03-05",
     "materia": "Gestione e manutenzione del luogo di lavoro",
