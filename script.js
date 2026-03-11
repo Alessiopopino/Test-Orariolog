@@ -1,11 +1,10 @@
 document.addEventListener("DOMContentLoaded", async () => {
-
   const calendarContainer = document.getElementById("calendar");
   const searchInput = document.getElementById("search-input");
   const daySelect = document.getElementById("day-select");
   const themeToggle = document.getElementById("theme-toggle");
 
-  /* ===== TEMA ===== */
+  // ===== TEMA =====
   const savedTheme = localStorage.getItem("theme");
   if (savedTheme === "dark") document.body.classList.add("dark-mode");
   themeToggle.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
@@ -17,14 +16,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     localStorage.setItem("theme", theme);
   });
 
-  /* ===== CREA CARD ===== */
+  // ===== CREA CARD CON ATTRIBUTI DATA =====
   function createCard(item, index) {
     const card = document.createElement("div");
     card.classList.add("card");
+    card.setAttribute("data-date", item.data);
+    card.setAttribute("data-materia", item.materia.toLowerCase());
+    card.setAttribute("data-docente", item.docente.toLowerCase());
 
     const date = new Date(item.data + "T00:00:00");
     const dayName = date.toLocaleDateString("it-IT", { weekday: "long" });
-
     const formattedDate = `${dayName} ${date.toLocaleDateString("it-IT", {
       day: "2-digit",
       month: "2-digit",
@@ -49,7 +50,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }, index * 60);
   }
 
-  /* ===== CARICA DATI ===== */
+  // ===== CARICA DATI =====
   async function loadOrario() {
     try {
       const response = await fetch("orario.json", { cache: "no-store" });
@@ -60,32 +61,56 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  /* ===== RENDER ===== */
   const data = await loadOrario();
-
   data
     .sort((a, b) => new Date(a.data) - new Date(b.data))
     .forEach((item, index) => createCard(item, index));
 
-  /* ===== FILTRI ===== */
+  // ===== FILTRI CON RICERCA MIGLIORATA =====
   function applyFilters() {
-    const text = searchInput.value.toLowerCase();
+    const text = searchInput.value.toLowerCase().trim();
     const day = daySelect.value;
 
     const cards = document.querySelectorAll(".card");
+    let visibleCount = 0;
 
     cards.forEach(card => {
-      const content = card.textContent.toLowerCase();
+      const materia = card.getAttribute("data-materia") || "";
+      const docente = card.getAttribute("data-docente") || "";
+      const dataISO = card.getAttribute("data-date") || "";
       const dateText = card.querySelector(".date").textContent.toLowerCase();
 
-      const matchText = content.includes(text);
-      const matchDay = (day === "all") || dateText.includes(day);
+      // Unisce tutti i campi per la ricerca testuale
+      const fullText = `${materia} ${docente} ${dateText} ${dataISO}`.toLowerCase();
 
-      card.style.display = (matchText && matchDay) ? "" : "none";
+      const matchText = text === "" || fullText.includes(text);
+      const matchDay = day === "all" || dateText.includes(day);
+
+      if (matchText && matchDay) {
+        card.style.display = "";
+        visibleCount++;
+      } else {
+        card.style.display = "none";
+      }
     });
+
+    // Gestione messaggio nessun risultato
+    let noResultsMsg = document.getElementById("no-results");
+    if (visibleCount === 0) {
+      if (!noResultsMsg) {
+        noResultsMsg = document.createElement("p");
+        noResultsMsg.id = "no-results";
+        noResultsMsg.style.textAlign = "center";
+        noResultsMsg.style.marginTop = "2rem";
+        noResultsMsg.style.fontStyle = "italic";
+        calendarContainer.appendChild(noResultsMsg);
+      }
+      noResultsMsg.textContent = "Nessun risultato trovato.";
+    } else if (noResultsMsg) {
+      noResultsMsg.remove();
+    }
   }
 
   searchInput.addEventListener("input", applyFilters);
   daySelect.addEventListener("change", applyFilters);
-
 });
