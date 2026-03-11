@@ -130,6 +130,7 @@ h1 {
     font-size: 1.2rem;
   }
 }
+
 .lesson a {
   color: var(--accent-color);
   text-decoration: none;
