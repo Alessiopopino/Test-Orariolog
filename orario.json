@@ -1,134 +1,22 @@
 [
   {
-    "data": "2026-03-09",
-    "materia": "Tecniche di configurazione e installazione di componenti hardware",
-    "docente": "Orazio Tiziano Ponti",
-    "orario": "13:30 – 17:30",
-    "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
-  },
-  {
-    "data": "2026-03-10",
-    "materia": "Educazione scientifico-ambientale",
-    "docente": "Giorgio Santi",
-    "orario": "08:30 – 11:30",
-    "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
-  },
-  {
-    "data": "2026-03-11",
-    "materia": "Tecniche di configurazione e installazione di componenti hardware",
-    "docente": "Orazio Tiziano Ponti",
-    "orario": "13:30 – 17:30",
-    "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
-  },
-  {
-    "data": "2026-03-12",
-    "materia": "Tecniche di manutenzione di network informatici",
-    "docente": "Francesco Lanzillo",
-    "orario": "14:00 – 17:00",
-    "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
-  },
-  {
-    "data": "2026-03-13",
-    "materia": "Educazione scientifico-ambientale",
-    "docente": "Giorgio Santi",
-    "orario": "13:00 – 17:00",
-    "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
-  },
-  {
-    "data": "2026-03-16",
-    "materia": "Tecniche di configurazione e installazione di componenti hardware",
-    "docente": "Orazio Tiziano Ponti",
-    "orario": "13:30 – 17:30",
-    "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
-  },
-  {
-    "data": "2026-03-17",
-    "materia": "Educazione scientifico-ambientale",
-    "docente": "Giorgio Santi",
-    "orario": "08:30 – 11:30",
-    "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
-  },
-  {
-    "data": "2026-03-18",
-    "materia": "Tecniche di configurazione e installazione di componenti hardware",
-    "docente": "Orazio Tiziano Ponti",
-    "orario": "13:30 – 17:30",
-    "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
-  },
-  {
-    "data": "2026-03-19",
-    "materia": "Tecniche di manutenzione di network informatici",
-    "docente": "Orazio Tiziano Ponti",
-    "orario": "08:30 – 13:30",
-    "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
-  },
-  {
-    "data": "2026-03-19",
-    "materia": "Tecniche di manutenzione di network informatici",
-    "docente": "Francesco Lanzillo",
-    "orario": "14:00 – 17:00",
-    "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
-  },
-  {
-    "data": "2026-03-20",
-    "materia": "Sicurezza nei luoghi di lavoro e salvaguardia ambientale",
-    "docente": "Serena Carnemolla",
-    "orario": "13:30 – 17:30",
-    "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
-  },
-  {
-    "data": "2026-03-21",
-    "materia": "Normativa CEI e Documentazione di manutenzione",
-    "docente": "Alessio Papi",
-    "orario": "09:00 – 13:00",
-    "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
-  },
-  {
-    "data": "2026-03-23",
-    "materia": "Tecniche di configurazione e installazione di componenti hardware",
-    "docente": "Orazio Tiziano Ponti",
-    "orario": "13:30 – 17:30",
-    "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
-  },
-  {
-    "data": "2026-03-24",
-    "materia": "Educazione scientifico-ambientale",
-    "docente": "Giorgio Santi",
-    "orario": "08:30 – 11:30",
-    "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
-  },
-  {
-    "data": "2026-03-24",
-    "materia": "Gestione e manutenzione del luogo di lavoro",
-    "docente": "Patrizia Casella",
-    "orario": "11:30 – 13:30",
-    "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
-  },
-  {
-    "data": "2026-03-25",
-    "materia": "Tecniche di configurazione e installazione di componenti hardware",
-    "docente": "Orazio Tiziano Ponti",
-    "orario": "13:30 – 17:30",
-    "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
-  },
-  {
     "data": "2026-03-26",
     "materia": "Educazione scientifico-ambientale",
     "docente": "Giorgio Santi",
-    "orario": "08:30 – 13:30",
+    "orario": "08:30 – 11:30",
     "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
   },
   {
     "data": "2026-03-26",
     "materia": "Tecniche di manutenzione di network informatici",
     "docente": "Francesco Lanzillo",
-    "orario": "14:00 – 17:00",
+    "orario": "12:00 – 17:00",
     "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
   },
   {
     "data": "2026-03-27",
-    "materia": "Sicurezza nei luochi di lavoro e salva guardia ambientale",
-    "docente": "Serena Carne Molla",
+    "materia": "Sicurezza nei luoghi di lavoro e salvaguardia ambientale",
+    "docente": "Serena Carnemolla",
     "orario": "13:30 – 17:30",
     "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
   },
@@ -165,6 +53,34 @@
     "materia": "Gestione e manutenzione del luogo di lavoro",
     "docente": "Patrizia Casella",
     "orario": "11:30 – 13:30",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
+  },
+  {
+    "data": "2026-04-01",
+    "materia": "Normativa CEI e Documentazione di manutenzione",
+    "docente": "Alessio Papi",
+    "orario": "08:30 – 11:30",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
+  },
+  {
+    "data": "2026-04-01",
+    "materia": "Tecniche di manutenzione di network informatici",
+    "docente": "Orazio Tiziano Ponti",
+    "orario": "11:30 – 13:30",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
+  },
+  {
+    "data": "2026-04-02",
+    "materia": "Tecniche di manutenzione di network informatici",
+    "docente": "Orazio Tiziano Ponti",
+    "orario": "08:30 – 13:30",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
+  },
+  {
+    "data": "2026-04-03",
+    "materia": "Normativa CEI e Documentazione di manutenzione",
+    "docente": "Alessio Papi",
+    "orario": "08:00 – 13:00",
     "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
   }
 ]
