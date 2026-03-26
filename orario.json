@@ -31,7 +31,7 @@
     "data": "2026-03-13",
     "materia": "Educazione scientifico-ambientale",
     "docente": "Giorgio Santi",
-    "orario": "14:00 – 17:00",
+    "orario": "13:00 – 17:00",
     "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
   },
   {
@@ -58,6 +58,13 @@
   {
     "data": "2026-03-19",
     "materia": "Tecniche di manutenzione di network informatici",
+    "docente": "Orazio Tiziano Ponti",
+    "orario": "08:30 – 13:30",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
+  },
+  {
+    "data": "2026-03-19",
+    "materia": "Tecniche di manutenzione di network informatici",
     "docente": "Francesco Lanzillo",
     "orario": "14:00 – 17:00",
     "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
@@ -73,7 +80,7 @@
     "data": "2026-03-21",
     "materia": "Normativa CEI e Documentazione di manutenzione",
     "docente": "Alessio Papi",
-    "orario": "08:00 – 12:00",
+    "orario": "09:00 – 13:00",
     "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
   },
   {
@@ -119,10 +126,17 @@
     "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
   },
   {
+    "data": "2026-03-27",
+    "materia": "Sicurezza nei luochi di lavoro e salva guardia ambientale",
+    "docente": "Serena Carne Molla",
+    "orario": "13:30 – 17:30",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
+  },
+  {
     "data": "2026-03-28",
     "materia": "Normativa CEI e Documentazione di manutenzione",
     "docente": "Alessio Papi",
-    "orario": "08:00 – 13:00",
+    "orario": "09:00 – 13:00",
     "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
   },
   {
