@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     .sort((a, b) => new Date(a.data) - new Date(b.data))
     .forEach((item, index) => createCard(item, index));
 
-  // ===== FILTRI CON RICERCA MIGLIORATA =====
+  // ===== FILTRI CON RICERCA SOLO SU DATA E DOCENTE =====
   function applyFilters() {
     const text = searchInput.value.toLowerCase().trim();
     const day = daySelect.value;
@@ -75,13 +75,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     let visibleCount = 0;
 
     cards.forEach(card => {
-      const materia = card.getAttribute("data-materia") || "";
       const docente = card.getAttribute("data-docente") || "";
       const dataISO = card.getAttribute("data-date") || "";
       const dateText = card.querySelector(".date").textContent.toLowerCase();
 
-      // Unisce tutti i campi per la ricerca testuale
-      const fullText = `${materia} ${docente} ${dateText} ${dataISO}`.toLowerCase();
+      // Combina solo docente e data (formato esteso + ISO)
+      const fullText = `${docente} ${dateText} ${dataISO}`.toLowerCase();
 
       const matchText = text === "" || fullText.includes(text);
       const matchDay = day === "all" || dateText.includes(day);
@@ -113,4 +112,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   searchInput.addEventListener("input", applyFilters);
   daySelect.addEventListener("change", applyFilters);
+
+  // ===== TITOLO CLICCABILE PER RIAVVIARE LA PAGINA =====
+  const title = document.querySelector("header h1");
+  title.style.cursor = "pointer";
+  title.addEventListener("click", () => {
+    window.location.reload();
+  });
 });
