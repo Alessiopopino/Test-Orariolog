@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const searchInput = document.getElementById("search-input");
   const daySelect = document.getElementById("day-select");
   const themeToggle = document.getElementById("theme-toggle");
+  const footer = document.querySelector("footer");
 
   // ===== TEMA =====
   const savedTheme = localStorage.getItem("theme");
@@ -66,6 +67,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     .sort((a, b) => new Date(a.data) - new Date(b.data))
     .forEach((item, index) => createCard(item, index));
 
+  // ===== RITARDO PER FAR COMPARIRE IL FOOTER =====
+  const totalAnimationTime = data.length * 60 + 300; // 300ms extra
+  setTimeout(() => {
+    footer.classList.add("visible");
+  }, totalAnimationTime);
+
   // ===== FILTRI CON RICERCA SOLO SU DATA E DOCENTE =====
   function applyFilters() {
     const text = searchInput.value.toLowerCase().trim();
@@ -79,7 +86,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       const dataISO = card.getAttribute("data-date") || "";
       const dateText = card.querySelector(".date").textContent.toLowerCase();
 
-      // Combina solo docente e data (formato esteso + ISO)
       const fullText = `${docente} ${dateText} ${dataISO}`.toLowerCase();
 
       const matchText = text === "" || fullText.includes(text);
@@ -93,7 +99,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     });
 
-    // Gestione messaggio nessun risultato
     let noResultsMsg = document.getElementById("no-results");
     if (visibleCount === 0) {
       if (!noResultsMsg) {
