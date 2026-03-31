@@ -122,17 +122,33 @@ footer {
   margin-top: 2rem;
   font-size: 0.85rem;
   color: var(--text-color);
-  opacity: 0;                /* invisibile all'inizio */
+  opacity: 0;
   transition: opacity 0.6s ease;
   border-top: 1px solid rgba(128, 128, 128, 0.2);
 }
 
 footer.visible {
-  opacity: 0.7;             /* diventa visibile con fade */
+  opacity: 0.7;
 }
 
 footer p {
   margin: 0;
+}
+
+/* MESSAGGIO MANUTENZIONE */
+.maintenance-message {
+  text-align: center;
+  padding: 3rem;
+  background: var(--card-bg);
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  max-width: 400px;
+  margin: 2rem auto;
+}
+
+.maintenance-message h2 {
+  margin-top: 0;
+  color: var(--accent-color);
 }
 
 /* MOBILE */
