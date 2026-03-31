@@ -151,6 +151,47 @@ footer p {
   color: var(--accent-color);
 }
 
+/* CHANGELOG nel footer */
+.changelog {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  border-top: 1px solid rgba(128, 128, 128, 0.2);
+  padding-top: 0.5rem;
+}
+
+.changelog-header {
+  cursor: pointer;
+  user-select: none;
+  display: inline-block;
+  font-weight: normal;
+  color: var(--accent-color);
+}
+
+.changelog-content {
+  margin-top: 0.5rem;
+  text-align: left;
+  background: var(--bg-color);
+  padding: 0.5rem;
+  border-radius: 8px;
+  font-size: 0.7rem;
+}
+
+.changelog-content ul {
+  margin: 0.2rem 0;
+  padding-left: 1.2rem;
+}
+
+.changelog-content li {
+  margin-bottom: 0.2rem;
+}
+
+.changelog-date {
+  font-size: 0.65rem;
+  text-align: right;
+  margin-top: 0.3rem;
+  opacity: 0.7;
+}
+
 /* MOBILE */
 @media (max-width: 768px) {
   .card {
@@ -181,62 +222,4 @@ footer p {
 
 .lesson a:hover {
   text-decoration: underline;
-}
-#no-results {
-  text-align: center;
-  font-size: 1.2rem;
-  color: var(--accent-color);
-  padding: 2rem;
-  background: var(--card-bg);
-  border-radius: 1rem;
-  width: 80%;
-  max-width: 400px;
-  margin: 2rem auto;
-}
-/* CHANGELOG */
-.changelog {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: var(--card-bg);
-  border-top: 1px solid rgba(128, 128, 128, 0.3);
-  font-size: 0.75rem;
-  color: var(--text-color);
-  z-index: 100;
-  max-height: 40px;
-  transition: max-height 0.3s ease;
-}
-
-.changelog-header {
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  background: var(--card-bg);
-  font-weight: bold;
-  text-align: center;
-  user-select: none;
-}
-
-.changelog-content {
-  padding: 0.5rem 1rem;
-  border-top: 1px solid rgba(128, 128, 128, 0.2);
-  background: var(--bg-color);
-  max-height: 300px;
-  overflow-y: auto;
-}
-
-.changelog-content ul {
-  margin: 0.5rem 0;
-  padding-left: 1.2rem;
-}
-
-.changelog-content li {
-  margin-bottom: 0.3rem;
-}
-
-.changelog-date {
-  font-size: 0.7rem;
-  text-align: right;
-  margin-top: 0.5rem;
-  opacity: 0.7;
 }
