@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const dayFilter = document.getElementById("day-filter");
 
   // ===== MODALITÀ MANUTENZIONE =====
-  const MAINTENANCE_MODE = false;
+  const MAINTENANCE_MODE = false; // Cambia in true per attivare la manutenzione
 
   // ===== FUNZIONE ESCAPE XSS =====
   function escapeHtml(str) {
@@ -178,8 +178,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     window.location.reload();
   });
 
-  // ===== CHANGELOG (aggiornamenti recenti) =====
-  function addChangelog() {
+  // ===== CHANGELOG NEL FOOTER =====
+  function addChangelogToFooter() {
+    if (!footer) return;
+    if (footer.querySelector(".changelog")) return;
+
     const changelogDiv = document.createElement("div");
     changelogDiv.className = "changelog";
     changelogDiv.innerHTML = `
@@ -198,10 +201,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       </div>
     `;
 
-    // Inserisci dopo il footer
-    document.body.appendChild(changelogDiv);
+    const footerP = footer.querySelector("p");
+    if (footerP) {
+      footer.insertBefore(changelogDiv, footerP.nextSibling);
+    } else {
+      footer.appendChild(changelogDiv);
+    }
 
-    // Toggle espansione
     const header = changelogDiv.querySelector(".changelog-toggle");
     const content = changelogDiv.querySelector(".changelog-content");
     header.addEventListener("click", () => {
@@ -211,6 +217,5 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  // Aggiungi il changelog dopo un breve ritardo per non interferire con le animazioni
-  setTimeout(addChangelog, 800);
+  setTimeout(addChangelogToFooter, 800);
 });
