@@ -171,4 +171,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   title.addEventListener("click", () => {
     window.location.reload();
   });
+  // Blocca tasti di ispezione (solo deterrente)
+document.addEventListener("contextmenu", (e) => e.preventDefault()); // blocca clic destro
+document.addEventListener("keydown", (e) => {
+  // F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+  if (e.key === "F12" || 
+      (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")) ||
+      (e.ctrlKey && e.key === "U")) {
+    e.preventDefault();
+  }
 });
