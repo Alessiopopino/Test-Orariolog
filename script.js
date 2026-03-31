@@ -150,23 +150,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  // ===== EFFETTO SCROLL: fade in/out della barra di ricerca =====
-  let scrollTimeout;
+  // ===== GESTIONE SCROLL E INTERAZIONE =====
   function handleScroll() {
     if (!searchWrapper) return;
-    // Aggiunge la classe di trasparenza
-    searchWrapper.classList.add("fade-scroll");
-    // Resetta il timeout precedente
-    clearTimeout(scrollTimeout);
-    // Dopo 300 ms dalla fine dello scroll, rimuove la classe
-    scrollTimeout = setTimeout(() => {
+    // Se lo scroll è in cima (o quasi) e la barra è trasparente, la rendo opaca
+    if (window.scrollY === 0) {
       searchWrapper.classList.remove("fade-scroll");
-    }, 300);
+    } else {
+      // Altrimenti aggiungo la classe trasparente
+      searchWrapper.classList.add("fade-scroll");
+    }
   }
 
-  function resetOpacity() {
+  function resetOpacityOnInteraction() {
     if (!searchWrapper) return;
-    clearTimeout(scrollTimeout);
     searchWrapper.classList.remove("fade-scroll");
   }
 
@@ -192,14 +189,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     daySelect.addEventListener("change", applyFilters);
   }
 
-  // ===== APPLICA EFFETTI SCROLL E INTERAZIONE =====
+  // ===== APPLICA EVENTI SCROLL E INTERAZIONE =====
   window.addEventListener("scroll", handleScroll);
-  // Se l'utente interagisce con la barra, torna opaca subito
-  searchWrapper.addEventListener("mouseenter", resetOpacity);
-  searchInput.addEventListener("focus", resetOpacity);
-  daySelect.addEventListener("focus", resetOpacity);
-  // Opzionale: clic su qualsiasi parte del wrapper
-  searchWrapper.addEventListener("click", resetOpacity);
+  // Interazioni che ripristinano l'opacità
+  searchWrapper.addEventListener("mouseenter", resetOpacityOnInteraction);
+  searchInput.addEventListener("focus", resetOpacityOnInteraction);
+  daySelect.addEventListener("focus", resetOpacityOnInteraction);
+  searchWrapper.addEventListener("click", resetOpacityOnInteraction);
 
   // ===== TITOLO CLICCABILE PER RIAVVIARE =====
   const title = document.querySelector("header h1");
@@ -226,7 +222,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           <li><strong>Deterrente ispezione</strong> – blocco tasto destro e combinazioni (F12, Ctrl+Shift+I, Ctrl+U)</li>
           <li><strong>Link mappe</strong> – aggiunto attributo <code>rel="noopener noreferrer"</code></li>
           <li><strong>Filtri migliorati</strong> – messaggio "Nessun risultato" quando non ci sono corrispondenze</li>
-          <li><strong>Ricerca sticky con fade</strong> – la barra diventa semi-trasparente durante lo scroll e torna visibile all'interazione</li>
+          <li><strong>Ricerca sticky con fade intelligente</strong> – la barra diventa trasparente durante lo scroll e torna visibile solo tornando in cima o interagendo</li>
         </ul>
         <p class="changelog-date">Ultimo aggiornamento: 31 marzo 2026</p>
       </div>
