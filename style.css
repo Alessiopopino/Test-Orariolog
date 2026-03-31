@@ -55,6 +55,49 @@ h1:hover {
   color: var(--text-color);
 }
 
+/* WRAPPER RICERCA STICKY */
+#search-wrapper {
+  position: sticky;
+  top: 70px;
+  background: var(--bg-color);
+  z-index: 9;
+  padding: 0.5rem 0 0.8rem 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: background 0.3s;
+}
+
+/* SEARCH BAR */
+#search-bar {
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem 0 0.3rem;
+}
+
+#search-input {
+  width: 90%;
+  max-width: 400px;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+/* FILTRO GIORNO */
+#day-filter {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+#day-select {
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
 /* CALENDARIO */
 #calendar-container {
   padding: 2rem;
@@ -85,34 +128,6 @@ h1:hover {
 .date {
   font-weight: bold;
   margin-bottom: 0.6rem;
-}
-
-/* SEARCH BAR */
-#search-bar {
-  display: flex;
-  justify-content: center;
-  margin: 1rem 0 0.3rem;
-}
-
-#search-input {
-  width: 90%;
-  max-width: 400px;
-  padding: 0.6rem 1rem;
-  border-radius: 12px;
-  border: 1px solid #ccc;
-}
-
-/* FILTRO GIORNO */
-#day-filter {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
-
-#day-select {
-  padding: 0.6rem 1rem;
-  border-radius: 12px;
-  border: 1px solid #ccc;
 }
 
 /* FOOTER */
@@ -211,6 +226,10 @@ footer p {
 
   h1 {
     font-size: 1.2rem;
+  }
+
+  #search-wrapper {
+    top: 60px;
   }
 }
 
