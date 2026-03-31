@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // ===== MODALITÀ MANUTENZIONE =====
   // Imposta a true per attivare la manutenzione (sito offline)
-  const MAINTENANCE_MODE = true;   // <--- Cambia qui in true quando serve
+  const MAINTENANCE_MODE = false;   // <--- Cambia qui in true quando serve
 
   // ===== TEMA =====
   const savedTheme = localStorage.getItem("theme");
