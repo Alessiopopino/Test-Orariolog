@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const searchBar = document.getElementById("search-bar");
   const dayFilter = document.getElementById("day-filter");
+  const searchWrapper = document.getElementById("search-wrapper");
 
   // ===== MODALITÀ MANUTENZIONE =====
   const MAINTENANCE_MODE = false; // Cambia in true per attivare la manutenzione
@@ -149,6 +150,26 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
+  // ===== EFFETTO SCROLL: fade in/out della barra di ricerca =====
+  let scrollTimeout;
+  function handleScroll() {
+    if (!searchWrapper) return;
+    // Aggiunge la classe di trasparenza
+    searchWrapper.classList.add("fade-scroll");
+    // Resetta il timeout precedente
+    clearTimeout(scrollTimeout);
+    // Dopo 300 ms dalla fine dello scroll, rimuove la classe
+    scrollTimeout = setTimeout(() => {
+      searchWrapper.classList.remove("fade-scroll");
+    }, 300);
+  }
+
+  function resetOpacity() {
+    if (!searchWrapper) return;
+    clearTimeout(scrollTimeout);
+    searchWrapper.classList.remove("fade-scroll");
+  }
+
   // ===== AVVIO =====
   if (MAINTENANCE_MODE) {
     searchBar.style.display = "none";
@@ -170,6 +191,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     searchInput.addEventListener("input", applyFilters);
     daySelect.addEventListener("change", applyFilters);
   }
+
+  // ===== APPLICA EFFETTI SCROLL E INTERAZIONE =====
+  window.addEventListener("scroll", handleScroll);
+  // Se l'utente interagisce con la barra, torna opaca subito
+  searchWrapper.addEventListener("mouseenter", resetOpacity);
+  searchInput.addEventListener("focus", resetOpacity);
+  daySelect.addEventListener("focus", resetOpacity);
+  // Opzionale: clic su qualsiasi parte del wrapper
+  searchWrapper.addEventListener("click", resetOpacity);
 
   // ===== TITOLO CLICCABILE PER RIAVVIARE =====
   const title = document.querySelector("header h1");
@@ -196,7 +226,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           <li><strong>Deterrente ispezione</strong> – blocco tasto destro e combinazioni (F12, Ctrl+Shift+I, Ctrl+U)</li>
           <li><strong>Link mappe</strong> – aggiunto attributo <code>rel="noopener noreferrer"</code></li>
           <li><strong>Filtri migliorati</strong> – messaggio "Nessun risultato" quando non ci sono corrispondenze</li>
-          <li><strong>Ricerca sticky</strong> – barra di ricerca e filtro rimangono fissi durante lo scroll (sfondo opaco)</li>
+          <li><strong>Ricerca sticky con fade</strong> – la barra diventa semi-trasparente durante lo scroll e torna visibile all'interazione</li>
         </ul>
         <p class="changelog-date">Ultimo aggiornamento: 31 marzo 2026</p>
       </div>
