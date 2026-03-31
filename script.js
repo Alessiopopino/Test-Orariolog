@@ -196,6 +196,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           <li><strong>Deterrente ispezione</strong> – blocco tasto destro e combinazioni (F12, Ctrl+Shift+I, Ctrl+U)</li>
           <li><strong>Link mappe</strong> – aggiunto attributo <code>rel="noopener noreferrer"</code></li>
           <li><strong>Filtri migliorati</strong> – messaggio "Nessun risultato" quando non ci sono corrispondenze</li>
+          <li><strong>Ricerca sticky</strong> – barra di ricerca e filtro rimangono fissi durante lo scroll (sfondo opaco)</li>
         </ul>
         <p class="changelog-date">Ultimo aggiornamento: 31 marzo 2026</p>
       </div>
