@@ -1,4 +1,18 @@
 document.addEventListener("DOMContentLoaded", async () => {
+  // ===== DETERRENTE PER STRUMENTI DI SVILUPPO =====
+  // Blocca clic destro
+  document.addEventListener("contextmenu", (e) => e.preventDefault());
+  // Blocca tasti di ispezione comuni
+  document.addEventListener("keydown", (e) => {
+    if (
+      e.key === "F12" ||
+      (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")) ||
+      (e.ctrlKey && e.key === "U")
+    ) {
+      e.preventDefault();
+    }
+  });
+
   const calendarContainer = document.getElementById("calendar");
   const searchInput = document.getElementById("search-input");
   const daySelect = document.getElementById("day-select");
@@ -40,7 +54,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   function createCard(item, index) {
     const card = document.createElement("div");
     card.classList.add("card");
-    // I dati degli attributi vengono mantenuti raw perché non vengono inseriti come HTML
     card.setAttribute("data-date", item.data);
     card.setAttribute("data-materia", item.materia.toLowerCase());
     card.setAttribute("data-docente", item.docente.toLowerCase());
@@ -53,11 +66,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       year: "numeric"
     })}`;
 
-    // Escapiamo solo i campi testuali che potrebbero contenere HTML malevolo
+    // Escapiamo i campi testuali
     const safeMateria = escapeHtml(item.materia);
     const safeDocente = escapeHtml(item.docente);
     const safeOrario = escapeHtml(item.orario);
-    // L'URL di maps è sicuro perché viene usato nell'attributo href
     const mapsUrl = item.maps;
 
     card.innerHTML = `
