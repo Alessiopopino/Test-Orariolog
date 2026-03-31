@@ -5,6 +5,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   const themeToggle = document.getElementById("theme-toggle");
   const footer = document.querySelector("footer");
 
+  // Elementi da nascondere in manutenzione
+  const searchBar = document.getElementById("search-bar");
+  const dayFilter = document.getElementById("day-filter");
+
+  // ===== MODALITÀ MANUTENZIONE =====
+  // Imposta a true per attivare la manutenzione (sito offline)
+  const MAINTENANCE_MODE = false;   // <--- Cambia qui in true quando serve
+
   // ===== TEMA =====
   const savedTheme = localStorage.getItem("theme");
   if (savedTheme === "dark") document.body.classList.add("dark-mode");
@@ -62,18 +70,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  const data = await loadOrario();
-  data
-    .sort((a, b) => new Date(a.data) - new Date(b.data))
-    .forEach((item, index) => createCard(item, index));
-
-  // ===== RITARDO PER FAR COMPARIRE IL FOOTER =====
-  const totalAnimationTime = data.length * 60 + 300; // 300ms extra
-  setTimeout(() => {
+  // ===== MESSAGGIO MANUTENZIONE =====
+  function showMaintenanceMessage() {
+    calendarContainer.innerHTML = `
+      <div class="maintenance-message">
+        <h2>🔧 Sito in manutenzione</h2>
+        <p>Torneremo presto con l'orario aggiornato.</p>
+        <p>Grazie per la pazienza!</p>
+      </div>
+    `;
     footer.classList.add("visible");
-  }, totalAnimationTime);
+  }
 
-  // ===== FILTRI CON RICERCA SOLO SU DATA E DOCENTE =====
+  // ===== FILTRI =====
   function applyFilters() {
     const text = searchInput.value.toLowerCase().trim();
     const day = daySelect.value;
@@ -100,7 +109,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     let noResultsMsg = document.getElementById("no-results");
-    if (visibleCount === 0) {
+    if (visibleCount === 0 && cards.length > 0) {
       if (!noResultsMsg) {
         noResultsMsg = document.createElement("p");
         noResultsMsg.id = "no-results";
@@ -115,8 +124,31 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  searchInput.addEventListener("input", applyFilters);
-  daySelect.addEventListener("change", applyFilters);
+  // ===== AVVIO =====
+  if (MAINTENANCE_MODE) {
+    // Nasconde i controlli e mostra il messaggio di manutenzione
+    searchBar.style.display = "none";
+    dayFilter.style.display = "none";
+    showMaintenanceMessage();
+  } else {
+    // Modalità normale: mostra i controlli e carica l'orario
+    searchBar.style.display = "";
+    dayFilter.style.display = "";
+    const data = await loadOrario();
+    data
+      .sort((a, b) => new Date(a.data) - new Date(b.data))
+      .forEach((item, index) => createCard(item, index));
+
+    // Ritardo per far comparire il footer
+    const totalAnimationTime = data.length * 60 + 300;
+    setTimeout(() => {
+      footer.classList.add("visible");
+    }, totalAnimationTime);
+
+    // Collega i filtri
+    searchInput.addEventListener("input", applyFilters);
+    daySelect.addEventListener("change", applyFilters);
+  }
 
   // ===== TITOLO CLICCABILE PER RIAVVIARE LA PAGINA =====
   const title = document.querySelector("header h1");
