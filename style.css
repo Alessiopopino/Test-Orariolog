@@ -193,3 +193,50 @@ footer p {
   max-width: 400px;
   margin: 2rem auto;
 }
+/* CHANGELOG */
+.changelog {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--card-bg);
+  border-top: 1px solid rgba(128, 128, 128, 0.3);
+  font-size: 0.75rem;
+  color: var(--text-color);
+  z-index: 100;
+  max-height: 40px;
+  transition: max-height 0.3s ease;
+}
+
+.changelog-header {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  background: var(--card-bg);
+  font-weight: bold;
+  text-align: center;
+  user-select: none;
+}
+
+.changelog-content {
+  padding: 0.5rem 1rem;
+  border-top: 1px solid rgba(128, 128, 128, 0.2);
+  background: var(--bg-color);
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.changelog-content ul {
+  margin: 0.5rem 0;
+  padding-left: 1.2rem;
+}
+
+.changelog-content li {
+  margin-bottom: 0.3rem;
+}
+
+.changelog-date {
+  font-size: 0.7rem;
+  text-align: right;
+  margin-top: 0.5rem;
+  opacity: 0.7;
+}
