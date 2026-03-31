@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", async () => {
   // ===== DETERRENTE PER STRUMENTI DI SVILUPPO =====
-  // Blocca clic destro
   document.addEventListener("contextmenu", (e) => e.preventDefault());
-  // Blocca tasti di ispezione comuni
   document.addEventListener("keydown", (e) => {
     if (
       e.key === "F12" ||
@@ -19,15 +17,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   const themeToggle = document.getElementById("theme-toggle");
   const footer = document.querySelector("footer");
 
-  // Elementi da nascondere in manutenzione
   const searchBar = document.getElementById("search-bar");
   const dayFilter = document.getElementById("day-filter");
 
   // ===== MODALITÀ MANUTENZIONE =====
-  // Imposta a true per attivare la manutenzione (sito offline)
-  const MAINTENANCE_MODE = false;   // <--- Cambia qui in true quando serve
+  const MAINTENANCE_MODE = false;
 
-  // ===== FUNZIONE DI ESCAPE PER PREVENIRE XSS =====
+  // ===== FUNZIONE ESCAPE XSS =====
   function escapeHtml(str) {
     if (!str) return "";
     return str
@@ -50,7 +46,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     localStorage.setItem("theme", theme);
   });
 
-  // ===== CREA CARD CON ATTRIBUTI DATA =====
+  // ===== CREA CARD =====
   function createCard(item, index) {
     const card = document.createElement("div");
     card.classList.add("card");
@@ -66,7 +62,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       year: "numeric"
     })}`;
 
-    // Escapiamo i campi testuali
     const safeMateria = escapeHtml(item.materia);
     const safeDocente = escapeHtml(item.docente);
     const safeOrario = escapeHtml(item.orario);
@@ -83,7 +78,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     `;
 
     calendarContainer.appendChild(card);
-
     setTimeout(() => {
       card.style.opacity = "1";
       card.style.transform = "translateY(0)";
@@ -177,10 +171,46 @@ document.addEventListener("DOMContentLoaded", async () => {
     daySelect.addEventListener("change", applyFilters);
   }
 
-  // ===== TITOLO CLICCABILE PER RIAVVIARE LA PAGINA =====
+  // ===== TITOLO CLICCABILE PER RIAVVIARE =====
   const title = document.querySelector("header h1");
   title.style.cursor = "pointer";
   title.addEventListener("click", () => {
     window.location.reload();
   });
+
+  // ===== CHANGELOG (aggiornamenti recenti) =====
+  function addChangelog() {
+    const changelogDiv = document.createElement("div");
+    changelogDiv.className = "changelog";
+    changelogDiv.innerHTML = `
+      <div class="changelog-header">
+        <span class="changelog-toggle">📋 Aggiornamenti recenti ▼</span>
+      </div>
+      <div class="changelog-content" style="display: none;">
+        <ul>
+          <li><strong>Modalità manutenzione</strong> – attivabile tramite costante nello script</li>
+          <li><strong>Sicurezza XSS</strong> – escape di tutti i campi testuali</li>
+          <li><strong>Deterrente ispezione</strong> – blocco tasto destro e combinazioni (F12, Ctrl+Shift+I, Ctrl+U)</li>
+          <li><strong>Link mappe</strong> – aggiunto attributo <code>rel="noopener noreferrer"</code></li>
+          <li><strong>Filtri migliorati</strong> – messaggio "Nessun risultato" quando non ci sono corrispondenze</li>
+        </ul>
+        <p class="changelog-date">Ultimo aggiornamento: 31 marzo 2026</p>
+      </div>
+    `;
+
+    // Inserisci dopo il footer
+    document.body.appendChild(changelogDiv);
+
+    // Toggle espansione
+    const header = changelogDiv.querySelector(".changelog-toggle");
+    const content = changelogDiv.querySelector(".changelog-content");
+    header.addEventListener("click", () => {
+      const isHidden = content.style.display === "none";
+      content.style.display = isHidden ? "block" : "none";
+      header.innerHTML = isHidden ? "📋 Aggiornamenti recenti ▲" : "📋 Aggiornamenti recenti ▼";
+    });
+  }
+
+  // Aggiungi il changelog dopo un breve ritardo per non interferire con le animazioni
+  setTimeout(addChangelog, 800);
 });
