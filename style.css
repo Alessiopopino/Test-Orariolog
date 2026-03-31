@@ -53,15 +53,14 @@ h1:hover {
   color: var(--text-color);
 }
 
-/* WRAPPER STICKY - completamente trasparente */
+/* WRAPPER STICKY - trasparente */
 #search-wrapper {
   position: sticky;
   top: 70px;
-  background: transparent;   /* nessuno sfondo */
+  background: transparent;
   z-index: 9;
   padding: 0.8rem 0 1rem 0;
   margin: 0;
-  /* nessuna ombra, nessun bordo */
 }
 
 /* SEARCH BAR */
@@ -72,8 +71,8 @@ h1:hover {
 }
 
 #search-input {
-  width: 90%;
-  max-width: 400px;
+  width: 70%;               /* più corta */
+  max-width: 260px;         /* limite massimo ridotto */
   padding: 0.7rem 1rem;
   border-radius: 12px;
   border: 1px solid #ccc;
@@ -81,7 +80,7 @@ h1:hover {
   color: var(--text-color);
   font-size: 1rem;
   transition: all 0.2s;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* leggera ombra per evidenziare */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 #search-input:focus {
@@ -238,7 +237,8 @@ footer p {
   }
 
   #search-input {
-    max-width: 280px;
+    width: 80%;             /* su mobile resta proporzionato */
+    max-width: 220px;       /* ancora più corto */
     font-size: 0.9rem;
   }
 
