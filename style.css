@@ -182,3 +182,14 @@ footer p {
 .lesson a:hover {
   text-decoration: underline;
 }
+#no-results {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--accent-color);
+  padding: 2rem;
+  background: var(--card-bg);
+  border-radius: 1rem;
+  width: 80%;
+  max-width: 400px;
+  margin: 2rem auto;
+}
