@@ -13,6 +13,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Imposta a true per attivare la manutenzione (sito offline)
   const MAINTENANCE_MODE = false;   // <--- Cambia qui in true quando serve
 
+  // ===== FUNZIONE DI ESCAPE PER PREVENIRE XSS =====
+  function escapeHtml(str) {
+    if (!str) return "";
+    return str
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
   // ===== TEMA =====
   const savedTheme = localStorage.getItem("theme");
   if (savedTheme === "dark") document.body.classList.add("dark-mode");
@@ -29,6 +40,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   function createCard(item, index) {
     const card = document.createElement("div");
     card.classList.add("card");
+    // I dati degli attributi vengono mantenuti raw perché non vengono inseriti come HTML
     card.setAttribute("data-date", item.data);
     card.setAttribute("data-materia", item.materia.toLowerCase());
     card.setAttribute("data-docente", item.docente.toLowerCase());
@@ -41,13 +53,20 @@ document.addEventListener("DOMContentLoaded", async () => {
       year: "numeric"
     })}`;
 
+    // Escapiamo solo i campi testuali che potrebbero contenere HTML malevolo
+    const safeMateria = escapeHtml(item.materia);
+    const safeDocente = escapeHtml(item.docente);
+    const safeOrario = escapeHtml(item.orario);
+    // L'URL di maps è sicuro perché viene usato nell'attributo href
+    const mapsUrl = item.maps;
+
     card.innerHTML = `
       <div class="date">${formattedDate}</div>
       <div class="lesson">
-        <strong>${item.materia}</strong><br>
-        ${item.docente}<br>
-        ${item.orario}<br>
-        <a href="${item.maps}" target="_blank">📍 Apri su Maps</a>
+        <strong>${safeMateria}</strong><br>
+        ${safeDocente}<br>
+        ${safeOrario}<br>
+        <a href="${mapsUrl}" target="_blank" rel="noopener noreferrer">📍 Apri su Maps</a>
       </div>
     `;
 
@@ -126,12 +145,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // ===== AVVIO =====
   if (MAINTENANCE_MODE) {
-    // Nasconde i controlli e mostra il messaggio di manutenzione
     searchBar.style.display = "none";
     dayFilter.style.display = "none";
     showMaintenanceMessage();
   } else {
-    // Modalità normale: mostra i controlli e carica l'orario
     searchBar.style.display = "";
     dayFilter.style.display = "";
     const data = await loadOrario();
@@ -139,13 +156,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       .sort((a, b) => new Date(a.data) - new Date(b.data))
       .forEach((item, index) => createCard(item, index));
 
-    // Ritardo per far comparire il footer
     const totalAnimationTime = data.length * 60 + 300;
     setTimeout(() => {
       footer.classList.add("visible");
     }, totalAnimationTime);
 
-    // Collega i filtri
     searchInput.addEventListener("input", applyFilters);
     daySelect.addEventListener("change", applyFilters);
   }
