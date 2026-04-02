@@ -1,19 +1,5 @@
 [
   {
-    "data": "2026-04-01",
-    "materia": "Normativa CEI e Documentazione di manutenzione",
-    "docente": "Alessio Papi",
-    "orario": "08:30 – 11:30",
-    "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
-  },
-  {
-    "data": "2026-04-01",
-    "materia": "Tecniche di manutenzione di network informatici",
-    "docente": "Orazio Tiziano Ponti",
-    "orario": "11:30 – 13:30",
-    "maps": "https://www.google.com/maps/search/?api=1&query=Via+Adriano+Zarini+252+Prato"
-  },
-  {
     "data": "2026-04-02",
     "materia": "Tecniche di manutenzione di network informatici",
     "docente": "Orazio Tiziano Ponti",
