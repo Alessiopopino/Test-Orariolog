@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const searchBar = document.getElementById("search-bar");
   const dayFilter = document.getElementById("day-filter");
   const searchWrapper = document.getElementById("search-wrapper");
+  const scrollToTopBtn = document.getElementById("scroll-to-top");
 
   // ===== MODALITÀ MANUTENZIONE =====
   const MAINTENANCE_MODE = false; // Cambia in true per attivare la manutenzione
@@ -150,14 +151,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  // ===== GESTIONE SCROLL E INTERAZIONE =====
+  // ===== GESTIONE SCROLL E INTERAZIONE PER RICERCA =====
   function handleScroll() {
     if (!searchWrapper) return;
-    // Se lo scroll è in cima (o quasi) e la barra è trasparente, la rendo opaca
     if (window.scrollY === 0) {
       searchWrapper.classList.remove("fade-scroll");
     } else {
-      // Altrimenti aggiungo la classe trasparente
       searchWrapper.classList.add("fade-scroll");
     }
   }
@@ -165,6 +164,22 @@ document.addEventListener("DOMContentLoaded", async () => {
   function resetOpacityOnInteraction() {
     if (!searchWrapper) return;
     searchWrapper.classList.remove("fade-scroll");
+  }
+
+  // ===== MOSTRA/NASCONDI FRECCIA TORNA SU =====
+  function handleScrollForButton() {
+    if (window.scrollY > 300) {
+      scrollToTopBtn.classList.add("show");
+    } else {
+      scrollToTopBtn.classList.remove("show");
+    }
+  }
+
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
   }
 
   // ===== AVVIO =====
@@ -189,13 +204,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     daySelect.addEventListener("change", applyFilters);
   }
 
-  // ===== APPLICA EVENTI SCROLL E INTERAZIONE =====
-  window.addEventListener("scroll", handleScroll);
-  // Interazioni che ripristinano l'opacità
+  // ===== EVENTI SCROLL E INTERAZIONE =====
+  window.addEventListener("scroll", () => {
+    handleScroll();
+    handleScrollForButton();
+  });
   searchWrapper.addEventListener("mouseenter", resetOpacityOnInteraction);
   searchInput.addEventListener("focus", resetOpacityOnInteraction);
   daySelect.addEventListener("focus", resetOpacityOnInteraction);
   searchWrapper.addEventListener("click", resetOpacityOnInteraction);
+
+  // Click sulla freccia
+  if (scrollToTopBtn) {
+    scrollToTopBtn.addEventListener("click", scrollToTop);
+  }
 
   // ===== TITOLO CLICCABILE PER RIAVVIARE =====
   const title = document.querySelector("header h1");
@@ -223,8 +245,9 @@ document.addEventListener("DOMContentLoaded", async () => {
           <li><strong>Link mappe</strong> – aggiunto attributo <code>rel="noopener noreferrer"</code></li>
           <li><strong>Filtri migliorati</strong> – messaggio "Nessun risultato" quando non ci sono corrispondenze</li>
           <li><strong>Ricerca sticky con fade intelligente</strong> – la barra diventa trasparente durante lo scroll e torna visibile solo tornando in cima o interagendo</li>
+          <li><strong>Freccia "torna su"</strong> – pulsante fisso in basso a sinistra, visibile dopo 300px di scroll</li>
         </ul>
-        <p class="changelog-date">Ultimo aggiornamento: 31 marzo 2026</p>
+        <p class="changelog-date">Ultimo aggiornamento: 2 aprile 2026</p>
       </div>
     `;
 
