@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const searchBar = document.getElementById("search-bar");
   const dayFilter = document.getElementById("day-filter");
-  const searchWrapper = document.getElementById("search-wrapper");
   const scrollToTopBtn = document.getElementById("scroll-to-top");
 
   // ===== MODALITÀ MANUTENZIONE =====
@@ -151,21 +150,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  // ===== GESTIONE SCROLL E INTERAZIONE PER RICERCA =====
-  function handleScroll() {
-    if (!searchWrapper) return;
-    if (window.scrollY === 0) {
-      searchWrapper.classList.remove("fade-scroll");
-    } else {
-      searchWrapper.classList.add("fade-scroll");
-    }
-  }
-
-  function resetOpacityOnInteraction() {
-    if (!searchWrapper) return;
-    searchWrapper.classList.remove("fade-scroll");
-  }
-
   // ===== MOSTRA/NASCONDI FRECCIA TORNA SU =====
   function handleScrollForButton() {
     if (window.scrollY > 300) {
@@ -204,15 +188,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     daySelect.addEventListener("change", applyFilters);
   }
 
-  // ===== EVENTI SCROLL E INTERAZIONE =====
-  window.addEventListener("scroll", () => {
-    handleScroll();
-    handleScrollForButton();
-  });
-  searchWrapper.addEventListener("mouseenter", resetOpacityOnInteraction);
-  searchInput.addEventListener("focus", resetOpacityOnInteraction);
-  daySelect.addEventListener("focus", resetOpacityOnInteraction);
-  searchWrapper.addEventListener("click", resetOpacityOnInteraction);
+  // ===== EVENTI SCROLL (solo per la freccia) =====
+  window.addEventListener("scroll", handleScrollForButton);
 
   // Click sulla freccia
   if (scrollToTopBtn) {
@@ -244,8 +221,8 @@ document.addEventListener("DOMContentLoaded", async () => {
           <li><strong>Deterrente ispezione</strong> – blocco tasto destro e combinazioni (F12, Ctrl+Shift+I, Ctrl+U)</li>
           <li><strong>Link mappe</strong> – aggiunto attributo <code>rel="noopener noreferrer"</code></li>
           <li><strong>Filtri migliorati</strong> – messaggio "Nessun risultato" quando non ci sono corrispondenze</li>
-          <li><strong>Ricerca sticky con fade intelligente</strong> – la barra diventa trasparente durante lo scroll e torna visibile solo tornando in cima o interagendo</li>
-          <li><strong>Freccia "torna su"</strong> – pulsante fisso in basso a destra, colore che segue il tema, visibile dopo 300px di scroll</li>
+          <li><strong>Freccia "torna su"</strong> – pulsante fisso in basso a destra, colore neutro che segue il tema, animazione al click</li>
+          <li><strong>Ricerca normale</strong> – la barra di ricerca scorre con la pagina (non più sticky)</li>
         </ul>
         <p class="changelog-date">Ultimo aggiornamento: 2 aprile 2026</p>
       </div>
