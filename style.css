@@ -53,19 +53,10 @@ h1:hover {
   color: var(--text-color);
 }
 
+/* Wrapper ricerca: normale, senza sticky */
 #search-wrapper {
-  position: sticky;
-  top: 70px;
-  background: transparent;
-  z-index: 9;
   padding: 0.8rem 0 1rem 0;
   margin: 0;
-  transition: opacity 0.3s ease;
-  opacity: 1;
-}
-
-#search-wrapper.fade-scroll {
-  opacity: 0.4;
 }
 
 #search-bar {
@@ -226,7 +217,7 @@ footer p {
   opacity: 0.7;
 }
 
-/* BOTTONE TORNA SU - colore sempre neutro, senza cambi al hover o click */
+/* BOTTONE TORNA SU - stabile, senza effetti di colore */
 #scroll-to-top {
   position: fixed;
   bottom: 20px;
@@ -257,17 +248,14 @@ footer p {
   visibility: visible;
 }
 
-/* Hover: nessun cambio di colore, solo leggero ingrandimento */
 #scroll-to-top:hover {
   transform: scale(1.05);
 }
 
-/* Active (click): rimpicciolisce leggermente e poi torna */
 #scroll-to-top:active {
   transform: scale(0.95);
 }
 
-/* Focus visibile solo per tastiera */
 #scroll-to-top:focus-visible {
   outline: 2px solid var(--accent-color);
   outline-offset: 2px;
@@ -290,10 +278,6 @@ footer p {
   }
   h1 {
     font-size: 1.2rem;
-  }
-  #search-wrapper {
-    top: 60px;
-    padding: 0.5rem 0 0.8rem 0;
   }
   #scroll-to-top {
     width: 40px;
