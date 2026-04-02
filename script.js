@@ -245,7 +245,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           <li><strong>Link mappe</strong> – aggiunto attributo <code>rel="noopener noreferrer"</code></li>
           <li><strong>Filtri migliorati</strong> – messaggio "Nessun risultato" quando non ci sono corrispondenze</li>
           <li><strong>Ricerca sticky con fade intelligente</strong> – la barra diventa trasparente durante lo scroll e torna visibile solo tornando in cima o interagendo</li>
-          <li><strong>Freccia "torna su"</strong> – pulsante fisso in basso a destra, colore dinamico, visibile dopo 300px di scroll</li>
+          <li><strong>Freccia "torna su"</strong> – pulsante fisso in basso a destra, colore che segue il tema, visibile dopo 300px di scroll</li>
         </ul>
         <p class="changelog-date">Ultimo aggiornamento: 2 aprile 2026</p>
       </div>
