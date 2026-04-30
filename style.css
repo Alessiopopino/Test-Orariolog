@@ -1,5 +1,3 @@
-Hai ragione, diamo ancora più aria! Porto il distanziamento verticale a 6rem (96px) tra una card e l’altra, così gli orari sono ben separati e si leggono senza confusione. Ecco il CSS definitivo.
-```css
 /* style.css - Distanziamento enorme tra le card */
 :root {
   /* Colori estate pieni */
@@ -310,4 +308,3 @@ footer.visible {
     font-size: 1.6rem;
   }
 }
-```
