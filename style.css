@@ -1,5 +1,3 @@
-Hai perfettamente ragione, il problema è che le card vengono inserite all'interno di `<div id="calendar">` e non direttamente nel container con il gap. Ho corretto il CSS aggiungendo lo stile per `#calendar` come flex column con un gap enorme di 5rem, così gli orari sono definitivamente distanziati. Ecco il fix finale.
-```css
 /* style.css - Distanziamento definitivo con gap su #calendar */
 :root {
   /* Colori estate pieni */
@@ -316,4 +314,3 @@ footer.visible {
     font-size: 1.6rem;
   }
 }
-```
