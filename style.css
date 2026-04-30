@@ -1,4 +1,4 @@
-/* style.css - Ultra Summer Edition */
+/* style.css - Ultra Summer Edition con spaziatura migliorata */
 :root {
   /* Colori estate pieni */
   --bg-sky: #c3e2f7;
@@ -139,14 +139,14 @@ h1 {
   color: var(--text-color);
 }
 
-/* Griglia card – centralissima */
+/* Griglia card – spaziatura verticale molto ampia per evitare "troppo vicini" */
 #calendar-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 2rem 1rem;
-  gap: 2rem;
+  gap: 2.5rem;  /* Aumentato da 2rem per distanziare le card */
 }
 
 .card {
@@ -162,6 +162,7 @@ h1 {
   transition: transform 0.3s ease, opacity 0.55s;
   backdrop-filter: blur(2px);
   border: 1px solid rgba(255, 200, 120, 0.6);
+  margin-bottom: 0; /* Nessun margine extra, gap già gestito */
 }
 
 .card:hover {
@@ -276,7 +277,7 @@ footer.visible {
   text-align: center;
 }
 
-/* Responsive: card sempre centrate */
+/* Responsive: spaziatura ancora più ampia su mobile */
 @media (max-width: 650px) {
   .card {
     width: 90%;
@@ -284,7 +285,7 @@ footer.visible {
   }
   #calendar-container {
     padding: 1rem 0.5rem;
-    gap: 1.5rem;
+    gap: 2rem;  /* Mobile: gap leggermente ridotto ma comunque arioso */
   }
   h1 {
     font-size: 1.6rem;
