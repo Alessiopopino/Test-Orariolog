@@ -1,5 +1,3 @@
-Ecco uno sfondo più marcatamente estivo, con un cielo che sfuma dall'azzurro al pesca e un effetto "raggi di sole" molto delicato, senza rubare la visibilità agli orari. Le card restano ben leggibili e centrali.
-```css
 /* style.css - Sfondo Summer Edition con raggi solari e cielo estivo */
 :root {
   /* Colori estate pieni */
@@ -310,4 +308,3 @@ footer.visible {
     font-size: 1.6rem;
   }
 }
-```
