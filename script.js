@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", async () => {
+  // ===== RIMUOVI PULSANTE TORNA SU =====
+  const scrollToTopBtn = document.getElementById("scroll-to-top");
+  if (scrollToTopBtn) scrollToTopBtn.remove();
+
   // ===== DETERRENTE PER STRUMENTI DI SVILUPPO =====
   document.addEventListener("contextmenu", (e) => e.preventDefault());
   document.addEventListener("keydown", (e) => {
@@ -19,7 +23,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const searchBar = document.getElementById("search-bar");
   const dayFilter = document.getElementById("day-filter");
-  const scrollToTopBtn = document.getElementById("scroll-to-top");
 
   // ===== MODALITÀ MANUTENZIONE =====
   const MAINTENANCE_MODE = false; // Cambia in true per attivare la manutenzione
@@ -150,22 +153,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  // ===== MOSTRA/NASCONDI FRECCIA TORNA SU =====
-  function handleScrollForButton() {
-    if (window.scrollY > 300) {
-      scrollToTopBtn.classList.add("show");
-    } else {
-      scrollToTopBtn.classList.remove("show");
-    }
-  }
-
-  function scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  }
-
   // ===== AVVIO =====
   if (MAINTENANCE_MODE) {
     searchBar.style.display = "none";
@@ -188,20 +175,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     daySelect.addEventListener("change", applyFilters);
   }
 
-  // ===== EVENTI SCROLL (solo per la freccia) =====
-  window.addEventListener("scroll", handleScrollForButton);
-
-  // Click sulla freccia
-  if (scrollToTopBtn) {
-    scrollToTopBtn.addEventListener("click", scrollToTop);
-  }
-
   // ===== TITOLO CLICCABILE PER RIAVVIARE =====
   const title = document.querySelector("header h1");
-  title.style.cursor = "pointer";
-  title.addEventListener("click", () => {
-    window.location.reload();
-  });
+  if (title) {
+    title.style.cursor = "pointer";
+    title.addEventListener("click", () => {
+      window.location.reload();
+    });
+  }
 
   // ===== CHANGELOG NEL FOOTER =====
   function addChangelogToFooter() {
@@ -221,8 +202,8 @@ document.addEventListener("DOMContentLoaded", async () => {
           <li><strong>Deterrente ispezione</strong> – blocco tasto destro e combinazioni (F12, Ctrl+Shift+I, Ctrl+U)</li>
           <li><strong>Link mappe</strong> – aggiunto attributo <code>rel="noopener noreferrer"</code></li>
           <li><strong>Filtri migliorati</strong> – messaggio "Nessun risultato" quando non ci sono corrispondenze</li>
-          <li><strong>Freccia "torna su"</strong> – pulsante fisso in basso a destra, colore neutro che segue il tema, animazione al click</li>
           <li><strong>Ricerca normale</strong> – la barra di ricerca scorre con la pagina (non più sticky)</li>
+          <li><strong>Rimosso pulsante torna su</strong></li>
         </ul>
         <p class="changelog-date">Ultimo aggiornamento: 2 aprile 2026</p>
       </div>
