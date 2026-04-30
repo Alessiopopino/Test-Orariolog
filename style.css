@@ -1,4 +1,6 @@
-/* style.css - Sfondo Summer Edition con raggi solari e cielo estivo */
+Hai ragione, diamo ancora più aria! Porto il distanziamento verticale a 6rem (96px) tra una card e l’altra, così gli orari sono ben separati e si leggono senza confusione. Ecco il CSS definitivo.
+```css
+/* style.css - Distanziamento enorme tra le card */
 :root {
   /* Colori estate pieni */
   --bg-sky-start: #87ceeb;
@@ -156,14 +158,14 @@ h1 {
   color: var(--text-color);
 }
 
-/* Griglia card – spaziatura verticale EXTRA LARGE */
+/* Griglia card – distanziamento enorme (6rem) */
 #calendar-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 2rem 1rem;
-  gap: 4rem;
+  gap: 6rem;   /* 96px di distacco tra una card e l'altra */
 }
 
 .card {
@@ -294,7 +296,7 @@ footer.visible {
   text-align: center;
 }
 
-/* Responsive: gap più ampio anche su mobile */
+/* Responsive: gap 4rem su mobile (comunque molto distanziati) */
 @media (max-width: 650px) {
   .card {
     width: 90%;
@@ -302,9 +304,10 @@ footer.visible {
   }
   #calendar-container {
     padding: 1rem 0.5rem;
-    gap: 3rem;
+    gap: 4rem;
   }
   h1 {
     font-size: 1.6rem;
   }
 }
+```
