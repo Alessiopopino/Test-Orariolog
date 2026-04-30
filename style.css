@@ -1,4 +1,6 @@
-/* style.css - Distanziamento enorme tra le card */
+Hai perfettamente ragione, il problema è che le card vengono inserite all'interno di `<div id="calendar">` e non direttamente nel container con il gap. Ho corretto il CSS aggiungendo lo stile per `#calendar` come flex column con un gap enorme di 5rem, così gli orari sono definitivamente distanziati. Ecco il fix finale.
+```css
+/* style.css - Distanziamento definitivo con gap su #calendar */
 :root {
   /* Colori estate pieni */
   --bg-sky-start: #87ceeb;
@@ -156,14 +158,21 @@ h1 {
   color: var(--text-color);
 }
 
-/* Griglia card – distanziamento enorme (6rem) */
+/* Contenitore principale: centra orizzontalmente */
 #calendar-container {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* #calendar div diventa il vero flex con distanza enorme tra le card */
+#calendar {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 2rem 1rem;
-  gap: 6rem;   /* 96px di distacco tra una card e l'altra */
+  gap: 6rem;   /* Distanza larghissima tra una card e l'altra */
+  width: 100%;
+  max-width: 400px;
 }
 
 .card {
@@ -171,7 +180,7 @@ h1 {
   padding: 1.6rem 1rem;
   border-radius: var(--border-radius-card);
   box-shadow: var(--shadow);
-  width: 92%;
+  width: 100%;
   max-width: 320px;
   text-align: center;
   opacity: 0;
@@ -179,7 +188,7 @@ h1 {
   transition: transform 0.3s ease, opacity 0.55s;
   backdrop-filter: blur(2px);
   border: 1px solid rgba(255, 200, 120, 0.6);
-  margin-bottom: 0;
+  margin: 0; /* nessun margine extra, gap gestisce tutto */
 }
 
 .card:hover {
@@ -294,17 +303,17 @@ footer.visible {
   text-align: center;
 }
 
-/* Responsive: gap 4rem su mobile (comunque molto distanziati) */
+/* Responsive: gap leggermente ridotto ma ancora ampio */
 @media (max-width: 650px) {
   .card {
     width: 90%;
     max-width: 300px;
   }
-  #calendar-container {
-    padding: 1rem 0.5rem;
+  #calendar {
     gap: 4rem;
   }
   h1 {
     font-size: 1.6rem;
   }
 }
+```
